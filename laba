@@ -4,10 +4,10 @@
 
 .data
 
-x1 DWORD 3
-y1 DWORD 7
-x2 DWORD 4
-y2 DWORD 5
+x1 DWORD 0
+y1 DWORD 0
+x2 DWORD 2
+y2 DWORD 0
 
 isUnderAttack BYTE 0
 
@@ -31,25 +31,26 @@ je a
 jmp ElseOne
 
 a:
-mov isUnderAttack, 1
+mov isUnderAttack, 1 ; оба бьют друг друга
 jmp EndOfIf
 
 ElseOne:
-cmp eax, 0
+cmp eax, 0 ; бьет ли по прямой (общий икс)
 je b
 jmp ElseTwo
 
 b:
-mov isUnderAttack, 1
+mov isUnderAttack, 2 ;бьёт ферзь
 
 ElseTwo:
-cmp ebx, 0
+cmp ebx, 0 ; бьет ли по прямой (общий игрек)
 je d
 jmp EndOfIf
 
 d: 
-mov isUnderAttack, 1
+mov isUnderAttack, 2 ; тоже бьёт ферзь
 endOfIf:
+
 
 invoke ExitProcess,0
 
